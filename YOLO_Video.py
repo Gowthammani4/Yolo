@@ -1,11 +1,7 @@
 from ultralytics import YOLO
 import cv2
 import math
-import numpy as np
-from PIL import Image
-import io
-import base64
-from pymongo import MongoClient
+
 def video_detection(path_x):
     video_capture = path_x
     #Create a Webcam Object
@@ -47,37 +43,9 @@ def video_detection(path_x):
                 cv2.putText(img, label, (x1,y1-2),0, 1,[255,255,255], thickness=1,lineType=cv2.LINE_AA)
 
         yield img
-        # client = MongoClient('mongodb://localhost:27017')
-        # db=client["flask_app"]
-        # col=db["pred_images"]
-        # cv2.imwrite("test_result.jpeg",img)
-        # img=np.squeeze(img.render())
-        # image = Image.open("test_result.jpeg")
-        # image_byte_array = io.BytesIO()
-        # image.save(image_byte_array, format='JPEG')
-        # image_base64 = base64.b64encode(image_byte_array.getvalue()).decode('utf-8')
-# Create document
-        # document = {'image': image_base64}
-# Insert document into collection
-        # col.insert_one(document)
-        
-#         document = col.find_one()
-# # Extract the image data
-#         image_base64 = document['image']
-# # Decode image from base64
-#         image_bytes = base64.b64decode(image_base64)
-
-# # Load the image using PIL
-#         image = Image.open(io.BytesIO(image_bytes))
-#         cv2.imwrite("mongodb_img",image)
         
 
-        #out.write(img)
-        # cv2.imshow("image", img)
-        #if cv2.waitKey(1) & 0xFF==ord('1'):
-            #break
-    #out.release()
 cv2.destroyAllWindows()
-# if __name__ == "__main__":
+
 
 
